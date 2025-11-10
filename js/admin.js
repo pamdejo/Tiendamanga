@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderProductos();
     });
 
-    // 🧾 Renderizar tabla de productos
+    // 🧾 Renderizar tabla de productos (con data-label)
     function renderProductos() {
       let productos = JSON.parse(localStorage.getItem("productos")) || [];
       productos = normalizarProductos(productos);
@@ -114,12 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
       productos.forEach((p) => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
-          <td>${p.nombre}</td>
-          <td>$${parseInt(p.precio).toLocaleString("es-CL")}</td>
-          <td>${p.categoria}</td>
-          <td>${p.stock ? "✅ En stock" : "❌ Sin stock"}</td>
-          <td>${p.destacado ? "🌟 Sí" : "—"}</td>
-          <td>
+          <td data-label="Nombre">${p.nombre}</td>
+          <td data-label="Precio">$${parseInt(p.precio).toLocaleString("es-CL")}</td>
+          <td data-label="Categoría">${p.categoria}</td>
+          <td data-label="Estado">${p.stock ? "✅ En stock" : "❌ Sin stock"}</td>
+          <td data-label="Destacado">${p.destacado ? "🌟 Sí" : "—"}</td>
+          <td data-label="Acciones">
             <button class="btn-stock" data-id="${p.id}" title="Cambiar stock">
               <i class="fas fa-sync-alt"></i>
             </button>
@@ -167,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
         productos[index].destacado = !productos[index].destacado;
         localStorage.setItem("productos", JSON.stringify(productos));
 
-        // Efecto visual de "pop" al cambiar el estado
         const boton = document.querySelector(`.btn-destacar[data-id="${id}"] i`);
         if (boton) {
           boton.style.transform = "scale(1.4)";
@@ -203,11 +202,11 @@ document.addEventListener("DOMContentLoaded", () => {
       usuarios.forEach((u) => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
-          <td>${u.nombre || "-"}</td>
-          <td>${u.correo || "-"}</td>
-          <td>${u.usuario || "-"}</td>
-          <td>${u.nacimiento || "-"}</td>
-          <td>${u.fechaRegistro || "-"}</td>
+          <td data-label="Nombre">${u.nombre || "-"}</td>
+          <td data-label="Correo">${u.correo || "-"}</td>
+          <td data-label="Usuario">${u.usuario || "-"}</td>
+          <td data-label="Fecha Nac.">${u.nacimiento || "-"}</td>
+          <td data-label="Registro">${u.fechaRegistro || "-"}</td>
         `;
         tablaUsuarios.appendChild(fila);
       });
@@ -230,12 +229,12 @@ document.addEventListener("DOMContentLoaded", () => {
           .join("<br>");
 
         fila.innerHTML = `
-          <td>${p.id}</td>
-          <td>${p.usuario.nombre}</td>
-          <td>${p.usuario.correo}</td>
-          <td>$${p.total.toLocaleString("es-CL")}</td>
-          <td>${p.fecha}</td>
-          <td>${productosLista}</td>
+          <td data-label="ID">${p.id}</td>
+          <td data-label="Usuario">${p.usuario.nombre}</td>
+          <td data-label="Correo">${p.usuario.correo}</td>
+          <td data-label="Total">$${p.total.toLocaleString("es-CL")}</td>
+          <td data-label="Fecha">${p.fecha}</td>
+          <td data-label="Productos">${productosLista}</td>
         `;
         tablaPedidos.appendChild(fila);
       });

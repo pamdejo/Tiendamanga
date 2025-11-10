@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Admin - Manga Store</title>
+  <title>Panel Admin - Manga Zone</title>
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="css/admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -13,11 +15,18 @@
   <!-- 🔹 HEADER -->
   <header class="admin-header">
     <div class="logo-container">
-      <img src="img/logo1.png" alt="Logo Manga Store" class="logo-admin">
+      <img src="img/logo1.png" alt="Logo Manga Zone" class="logo-admin">
       <h1>Panel de Administración</h1>
     </div>
 
-    <nav class="nav-admin">
+    <!-- ✅ Botón hamburguesa -->
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav-admin" id="navMenu">
       <ul>
         <li><a href="#" class="nav-link active" data-section="productos"><i class="fas fa-box"></i> Productos</a></li>
         <li><a href="#" class="nav-link" data-section="usuarios"><i class="fas fa-users"></i> Usuarios</a></li>
@@ -30,7 +39,6 @@
 
   <!-- 🔸 CONTENIDO PRINCIPAL -->
   <main class="admin-main">
-
     <!-- 🛒 PRODUCTOS -->
     <section id="productos" class="seccion visible">
       <h2>🛒 Agregar nuevo producto</h2>
@@ -42,23 +50,22 @@
         <button type="submit">Guardar producto</button>
       </form>
       <p id="mensaje"></p>
+
       <div class="lista-productos-admin">
-  <h3>📦 Productos registrados</h3>
-  <table id="tablaProductos">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Categoría</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Se llena dinámicamente desde admin.js -->
-    </tbody>
-  </table>
-</div>
+        <h3>📦 Productos registrados</h3>
+        <table id="tablaProductos">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Categoría</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </section>
 
     <!-- 👥 USUARIOS -->
@@ -74,9 +81,7 @@
             <th>Registro</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Se cargan dinámicamente desde admin.js -->
-        </tbody>
+        <tbody></tbody>
       </table>
     </section>
 
@@ -94,14 +99,13 @@
             <th>Productos</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Se llenará desde admin.js -->
-        </tbody>
+        <tbody></tbody>
       </table>
     </section>
-
   </main>
 
-  <script src="js/admin.js"></script>
+  <!-- 🔸 SCRIPTS -->
+  <script src="js/menu.js" defer></script>
+  <script src="js/admin.js" defer></script>
 </body>
 </html>
